@@ -104,6 +104,24 @@ $(window).keydown(function(event){
 	}
 });
 
+hiddenInput.addEventListener('input', function () {
+  	const value = hiddenInput.value;
+
+ 	if (value.length > 0) {
+		const letter = value[0].toUpperCase();
+		if (az.indexOf(letter) !== -1){
+			answers[selected[0]][selected[1]] = letter;
+			mouse_at = null;
+			SelectNext();
+		}
+		
+		Repaint();
+
+		// Pulisci l'input per il prossimo carattere
+		hiddenInput.value = '';
+  	}
+});
+
 function init() {
 	// Imposta dimensioni canvas proporzionalmente
 	var canvw = document.getElementById("MainCanvas").offsetWidth;
@@ -433,6 +451,7 @@ function init(){
 function Repaint(){
 	ctx.clearRect(0, 0, cw, ch);
 	
+	const hiddenInput = document.getElementById('hiddenInput');
 	var refreshClues = true;
 	if ($('.clue').length > 0){ refreshClues = false; }
 	
@@ -456,7 +475,11 @@ function Repaint(){
 					mouse_at[1] > config.paddingTop + (i*config.boxHeight) &&
 					mouse_at[0] < config.paddingLeft + (j*config.boxWidth) + config.boxWidth &&
 					mouse_at[1] < config.paddingTop + (i*config.boxHeight) + config.boxHeight
-				){ selected = [j,i]; }
+				){ selected = [j,i]; 
+					hiddenInput.focus();
+				} else {
+					hiddenInput.blur();
+				}
 				
 			}
 			
