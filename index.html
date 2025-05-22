@@ -3,55 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Matrimonio di Max & Kiki</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Georgia', serif;
-      background-color: #fcefe3; /* Colore pastello */
-      color: #4b3e2a;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
-    }
-
-    header {
-      padding: 40px 20px 10px;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin: 0;
-    }
-
-    .gif-container {
-      margin: 20px 0;
-    }
-
-    .gif-container img {
-      max-width: 100%;
-      width: 300px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .description {
-      max-width: 600px;
-      padding: 20px;
-      font-size: 1.2em;
-      line-height: 1.6;
-    }
-
-    footer {
-      margin-top: auto;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #7c6c5c;
-    }
-  </style>
+  <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
   <header>
@@ -69,8 +21,26 @@
     <p>Vi aspettiamo per festeggiare insieme un giorno speciale, pieno di emozioni, sorrisi e ricordi indimenticabili.</p>
   </div>
 
+  <canvas id="MainCanvas" width="1024" height="1024"></canvas>
+  <div id="Clues">
+    <div id="Across">
+      <h4>Orizzontali</h4>
+      <div id="CluesAcross"></div>
+    </div>
+    <div id="Down">
+      <h4>Verticali</h4>
+      <div id="CluesDown"></div>
+    </div>
+  </div>
+
   <footer>
     © 2025 written by ChatGPT — Nessun diritto riservato
   </footer>
+
+  <!-- jQuery prima -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Cruciverba -->
+  <script src="src/cross.js"></script>
 </body>
 </html>
