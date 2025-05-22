@@ -114,13 +114,13 @@ canvas.addEventListener('pointerdown', () => {
 });
 
 // Quando tocchi altrove (non sul canvas), nascondi la tastiera
-document.addEventListener('pointerdown', (e) => {
-  if (!canvas.contains(e.target)) {
-	console.log("blur");
-    hiddenInput.blur(); // Fa scomparire la tastiera
-  }
+// document.addEventListener('pointerdown', (e) => {
+//   if (!canvas.contains(e.target)) {
+// 	console.log("blur");
+//     hiddenInput.blur(); // Fa scomparire la tastiera
+//   }
 
-});
+// });
 
 // hiddenInput.addEventListener('input', function () {
 //   	const value = hiddenInput.value;
