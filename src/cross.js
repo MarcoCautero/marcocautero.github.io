@@ -14,12 +14,12 @@ var selected = null;
 var selectedDir = null;
 var mouse_at = null;
 var config = {
-	'rows': 'auto',
-	'cols': 'auto',
+	'rows': 7,
+	'cols': 6,
 	'paddingLeft': 0,
 	'paddingTop': 0,
-	'boxWidth': 100,
-	'boxHeight': 100,
+	'boxWidth': 50,
+	'boxHeight': 50,
 	'fontSize': 28,
 	'tolerance': 0,
 	'words': [
@@ -28,16 +28,6 @@ var config = {
   		{ word: "Rex", clue: "Il T... da ingresso in chiesa", start: [0, 5], dir: 1 },
   		{ word: "FUCILE", clue: "Lo imbracciava il Bepo al primo incontro con Max", start: [1, 0], dir: 0 },
   		{ word: "ABITO", clue: "Oggi si è visto per la prima volta", start: [5, 1], dir: 0 }
-		// { 'word': 'crossword',	'clue': 'What you\'re doing right now!' },
-		// { 'word': 'water', 		'clue': 'Another name for dihydrogen monoxide.' },
-		// { 'word': 'jedi', 		'clue': 'The good guys in Star Wars.' },
-		// { 'word': 'sith', 		'clue': 'The bad guys in Star Wars.' },
-		// { 'word': 'fog', 		'clue': 'A thicker form of mist.' },
-		// { 'word': 'school', 	'clue': 'Where you go to learn.' },
-		// { 'word': 'bank', 		'clue': 'Where money is kept safe.' },
-		// { 'word': 'grass', 		'clue': 'Always greener on the other side.' },
-		// { 'word': 'coin', 		'clue': 'A solid form of physical currency.' },
-		// { 'word': 'train', 		'clue': 'A method of transport that uses a track.' }
 	]
 };
 
@@ -50,6 +40,7 @@ $(document).ready(function(){
 	ctx.lineWidth = 2;
 	ctx.strokeStyle = '#000000';
 	init();
+	showClues();
 });
 
 $(document).ready(function () {
@@ -114,46 +105,39 @@ $(window).keydown(function(event){
 });
 
 function init() {
-  // Imposta dimensioni canvas proporzionalmente
-  var propW = Math.floor(ch * ($('canvas').width() / $('canvas').height()));
-  $('canvas').attr('width', propW);
-  cw = propW;
+	// Imposta dimensioni canvas proporzionalmente
+	var canvw = document.getElementById("MainCanvas").offsetWidth;
+	var propH = Math.floor(canvw*(config.rows / config.cols));
+	$('canvas').attr('height', propH);
 
-  if (config.cols === 'auto') {
-    config.cols = 6; // o quello che vuoi
-  }
-  if (config.rows === 'auto') {
-    config.rows = 7;
-  }
-
-  // Crea griglia vuota
-  grid = [];
-  answers = [];
-  for (let x = 0; x < config.cols; x++) {
-    let yArr = [];
-    for (let y = 0; y < config.rows; y++) {
-      yArr.push('');
-    }
-    grid.push([...yArr]);
-    answers.push([...yArr]);
-  }
+	// Crea griglia vuota
+	grid = [];
+	answers = [];
+	for (let x = 0; x < config.cols; x++) {
+		let yArr = [];
+		for (let y = 0; y < config.rows; y++) {
+		yArr.push('');
+		}
+		grid.push([...yArr]);
+		answers.push([...yArr]);
+	}
 
 	// console.log("config.cols;:", config.cols);
-  // Inserisci le parole fisse nella griglia
-  config.words.forEach(wordObj => {
-    const { word, start, dir } = wordObj;
-    const [y, x] = start;
+	// Inserisci le parole fisse nella griglia
+	config.words.forEach(wordObj => {
+		const {word, start, dir} = wordObj;
+		const [y, x] = start;
 
-    for (let i = 0; i < word.length; i++) {
-      const cx = dir === 0 ? x + i : x;
-      const cy = dir === 1 ? y + i : y;
-      grid[cx][cy] = word[i].toUpperCase();
-      answers[cx][cy] = ''; // o pre-compilato se vuoi
-    }
-  });
+		for (let i = 0; i < word.length; i++) {
+			const cx = dir === 0 ? x + i : x;
+			const cy = dir === 1 ? y + i : y;
+			grid[cx][cy] = word[i].toUpperCase();
+			answers[cx][cy] = ''; // o pre-compilato se vuoi
+		}
+	});
 
-  Repaint();
-  inputReady = true;
+	Repaint();
+	inputReady = true;
 }
 
 /* 
@@ -484,35 +468,32 @@ function Repaint(){
 			}
 		}
 	}
-	
+
 	var clueNo = 1;
 	var clueHistory = [];
 	for (i=0; i<config.words.length; i++){
-		if (config.words[i].start !== undefined && config.words[i].dir !== undefined){
-			var dir = "Across"; if (config.words[i].dir === 1){ dir = "Down"; }
-			if (clueHistory.indexOf(config.words[i].start[0] + "," + config.words[i].start[1]) === -1){
-				var marginX = 4;
-				var marginY = 14;
+		
+		var dir = "Across"; if (config.words[i].dir === 1){ dir = "Down"; }
+
+		if (clueHistory.indexOf(config.words[i].start[0] + "," + config.words[i].start[1]) === -1){
+			console.log("word:",config.words[i].start[0] + "," + config.words[i].start[1]);
+			var marginX = 4;
+			var marginY = 14;
+			
+			if (clueNo > 9){ marginX = 2; marginY = 12; }
+			
+			ctx.font = 14 + "px Arial";
+			ctx.fillText(clueNo, config.paddingLeft + (config.words[i].start[1]*config.boxWidth) + marginX, config.paddingTop + (config.words[i].start[0]*config.boxHeight) + marginY);
+			ctx.font = config.fontSize + "px Arial";
 				
-				if (clueNo > 9){ marginX = 2; marginY = 12; }
-				
-				ctx.font = 14 + "px Arial";
-				ctx.fillText(clueNo, config.paddingLeft + (config.words[i].start[0]*config.boxWidth) + marginX, config.paddingTop + (config.words[i].start[1]*config.boxHeight) + marginY);
-				ctx.font = config.fontSize + "px Arial";
-					
-				clueHistory.push(config.words[i].start[0] + "," + config.words[i].start[1]);				
-				
-				if (refreshClues){
-					$('#Clues' + dir).append('<div class="clue" clue-id="' + clueNo + '">'+ clueNo + ". " + config.words[i].clue +'</div>');
-				}
-				
-				clueNo++;
-			} else {
-				if (refreshClues){
-					var cNo = clueHistory.indexOf(config.words[i].start[0] + "," + config.words[i].start[1]) + 1;
-					$('#Clues' + dir).prepend('<div class="clue" clue-id="' + cNo + '">'+ cNo + ". " + config.words[i].clue +'</div>');
-				}
+			clueHistory.push(config.words[i].start[0] + "," + config.words[i].start[1]);				
+			
+			if (refreshClues){
+				$('#Clues' + dir).append('<div class="clue" clue-id="' + clueNo + '">'+ clueNo + ". " + config.words[i].clue +'</div>');
 			}
+			
+			clueNo++;
+			
 		}
 	}
 	
@@ -532,6 +513,27 @@ function Repaint(){
 	}
 	
 	if (JSON.stringify(grid) === JSON.stringify(answers)){ Victory(); }
+}
+
+function showClues() {
+  const cluesContainerOriz = document.getElementById('CluesAcross');
+  cluesContainerOriz.innerHTML = ''; // pulisci
+
+  const cluesContainerVert = document.getElementById('CluesAcross');
+  cluesContainerVert.innerHTML = ''; // pulisci
+
+  config.words.forEach((word, index) => {
+    const li = document.createElement('li');
+	if(word.dir === 0){
+		li.textContent = `${index + 1}. ${word.clue}`;
+    	cluesContainerOriz.appendChild(li);
+	} else {
+		li.cluesContainerVert = `${index + 1}. ${word.clue}`;
+		cluesContainerVert.appendChild(li);
+	}
+    
+  });
+
 }
 
 function getFontOffset(axis, letter){

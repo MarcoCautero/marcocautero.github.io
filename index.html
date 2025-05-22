@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matrimonio di Max & Kiki</title>
   <link rel="stylesheet" href="style/style.css">
 </head>
@@ -21,16 +22,31 @@
     <p>Vi aspettiamo per festeggiare insieme un giorno speciale, pieno di emozioni, sorrisi e ricordi indimenticabili.</p>
   </div>
 
-  <canvas id="MainCanvas" width="1024" height="1024"></canvas>
-  <div id="Clues">
-    <div id="Across">
-      <h4>Orizzontali</h4>
-      <div id="CluesAcross"></div>
+ <!-- <canvas id="MainCanvas" width="1024" height="1024"></canvas> -->
+ 
+ <div class="container" id="myCross">
+    <canvas id="MainCanvas"></canvas>
+
+    <div id="cluesPanel">
+      <h2>Definizioni</h2>
+        <div id="Across">
+          <h4>Orizzontali</h4>
+          <div id="CluesAcross"></div>
+        </div>
+        <div id="Down">
+          <h4>Verticali</h4>
+          <div id="CluesDown"></div>
+        </div>
+      <!-- <ul id="clues">
+        Le definizioni verranno inserite dinamicamente qui
+      </ul> -->
     </div>
-    <div id="Down">
-      <h4>Verticali</h4>
-      <div id="CluesDown"></div>
-    </div>
+  </div>
+
+  <div id="eventInfo">
+    <h2>Informazioni Evento</h2>
+    <p><strong>Cerimonia:</strong> Chiesa di San Leonardo, ore 12:30</p>
+    <p><strong>Festa:</strong> Castello Rive d'Arcano</p>
   </div>
 
   <footer>
