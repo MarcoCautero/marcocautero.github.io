@@ -2,23 +2,75 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Max & Kiki</title>
+  <title>Matrimonio di Max & Kiki</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background-color: #fcefe3; /* Colore pastello */
+      color: #4b3e2a;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      background-color: #f0f0f0;
+      text-align: center;
+      min-height: 100vh;
     }
-    img {
+
+    header {
+      padding: 40px 20px 10px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    .gif-container {
+      margin: 20px 0;
+    }
+
+    .gif-container img {
       max-width: 100%;
+      width: 300px;
       height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .description {
+      max-width: 600px;
+      padding: 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #7c6c5c;
     }
   </style>
 </head>
 <body>
-  <img src="img/animazione.gif" alt="GIF locale">
+  <header>
+    <h1>Max & Kiki</h1>
+    <p>Un amore, una promessa, un per sempre 💍</p>
+  </header>
+
+  <div class="gif-container">
+    <img src="img/animazione.gif" alt="GIF romantica">
+  </div>
+
+  <div class="description">
+    <p>Max & Kiki si sono conosciuti in un caffè del centro storico, dove bastò uno sguardo per far nascere una storia meravigliosa.</p>
+    <p>Dopo anni di avventure, viaggi e sogni condivisi, hanno deciso di celebrare il loro amore con tutti voi.</p>
+    <p>Vi aspettiamo per festeggiare insieme un giorno speciale, pieno di emozioni, sorrisi e ricordi indimenticabili.</p>
+  </div>
+
+  <footer>
+    © 2025 written by ChatGPT — Nessun diritto riservato
+  </footer>
 </body>
 </html>
