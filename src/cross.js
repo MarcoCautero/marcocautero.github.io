@@ -146,6 +146,9 @@ function init() {
 	var propH = Math.floor(canvw*(config.rows / config.cols));
 	$('canvas').attr('height', propH);
 
+	cw = canvw;
+	ch = propH;
+
 	// Crea griglia vuota
 	grid = [];
 	answers = [];
