@@ -43,11 +43,12 @@ h1 {
     max-width: 100%;
     padding: 20px;
     display: flex;
-    background: rgba(164, 236, 241, 0.575);
+    background: rgba(245, 222, 180, 0.575);
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     flex-direction: column;
     align-items: center;
+    margin-top: 30px;
 }
 
 @media (min-width: 768px) {
@@ -91,22 +92,70 @@ footer {
 	padding: 10px;
 }
 
+.h-divider {
+  margin: auto;
+  margin-top: 40px;
+  width: 80%;
+  position: relative;
+}
+
+.h-divider .shadow {
+  overflow: hidden;
+  height: 20px;
+}
+
+.h-divider .shadow:after {
+  content: '';
+  display: block;
+  margin: -25px auto 0;
+  width: 100%;
+  height: 25px;
+  border-radius: 125px/12px;
+  box-shadow: 0 0 8px black;
+}
+
+.h-divider .text {
+  width: 100px;
+  height: 45px;
+  padding: 10px;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: -33px;
+  left: 50%;
+  margin-left: -60px;
+  border-radius: 100%;
+  box-shadow: 0 2px 4px #999;
+  background: white;
+} 
+.h-divider .text i {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  border-radius: 100%;
+  border: 1px dashed #aaa;
+  text-align: center;
+  line-height: 50px;
+  font-style: normal;
+  color: #999;
+}
+
+.h-divider .text2 {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: -35px;
+  left: 50%;
+  margin-left: -25px;
+  border-radius: 100%;
+  box-shadow: 0 2px 4px #999;
+  background: white;
+}
+
 #Clues .clue {
 	width: 100%;
 	padding: 0px;
 	margin: 0px;
-}
-
-#clueList {
-  max-width: 300px;
-  font-family: sans-serif;
-  font-size: 14px;
-}
-
-#clueList ul {
-  padding-left: 1em;
-}
-
-#clueList li {
-  margin-bottom: 0.5em;
 }

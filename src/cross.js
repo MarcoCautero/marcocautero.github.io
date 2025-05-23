@@ -45,23 +45,38 @@ $(document).ready(function(){
 	// 
 });
 
+$(document).ready(function() {
+    $('#field').click(function(e){
+        $(this).focus();
+    });
+    $('#button').click(function(e) {
+        $('#field').trigger('click');
+    });
+});
+
 $(document).ready(function () {
   const canvas = document.getElementById("MainCanvas");
 
-  $(canvas).on("mouseup", function (event) {
-    if (inputReady) {
-		const rect = canvas.getBoundingClientRect();
-		const scaleX = canvas.width / rect.width;
-		const scaleY = canvas.height / rect.height;
+	$(canvas).on("mouseup", function (event) {
+		if (inputReady) {
+			const rect = canvas.getBoundingClientRect();
+			const scaleX = canvas.width / rect.width;
+			const scaleY = canvas.height / rect.height;
 
-		const x = (event.clientX - rect.left) * scaleX;
-		const y = (event.clientY - rect.top) * scaleY;
+			const x = (event.clientX - rect.left) * scaleX;
+			const y = (event.clientY - rect.top) * scaleY;
 
-		mouse_at = [x, y];
-  		// hiddenInput.focus();	
-		Repaint();
-    }
-  });
+			mouse_at = [x, y];
+			// hiddenInput.focus();	
+			Repaint();
+		}
+	});
+
+	$(canvas).click(function(e){
+		console.log("click");
+        hiddenInput.focus();
+    });
+
 });
 
 $(window).keydown(function(event){
@@ -149,296 +164,6 @@ function init() {
 	inputReady = true;
 }
 
-/* 
-function init(){
-	var propW = Math.floor(ch * ($('canvas').width() / $('canvas').height()));
-  $('canvas').attr('width', propW);
-  cw = propW;
-  
-  if (config.cols === 'auto'){ config.cols = Math.floor((parseInt($('canvas').attr('width')) - config.paddingLeft) / config.fontSize / 2); }
-	if (config.rows === 'auto'){ config.rows = Math.floor((parseInt($('canvas').attr('height')) - config.paddingTop) / config.fontSize / 2); }
-  
-  var notPlaced = null;
-	var maxPlacementAttempts = 999;
-	while ((notPlaced === null || notPlaced.length > config.tolerance) && maxPlacementAttempts > 0){
-		grid = [];
-		for (x=0; x < 250; x++){
-			var yArr = [];
-			for (y=0; y < 250; y++){
-				yArr.push('');
-			}
-			
-			grid.push(yArr);
-		}
-		
-		notPlaced = [];	
-		minX = null;
-		maxX = null;
-		minY = null;
-		maxY = null;
-		var placed = [];
-		var startingWordIndex = Math.floor(Math.random() * config.words.length);
-		var startingWordDir = Math.floor(Math.random() * 2);
-		
-		config.words.forEach(function(word, i){
-			if (i === startingWordIndex){
-				placed.push({ word:word.word, dir:startingWordDir, x:99, y:99 });
-				SetBounds(99, 99, startingWordDir, word.word.length);
-			} else {
-				notPlaced.push(word.word);
-			}
-		});	
-		
-		notPlaced.forEach(function(){
-			var potentialMatches = [];
-			var safeMatches = [];
-			var safeMultiMatches = [];
-			
-			placed.forEach(function(word){
-				var altDir = 0;
-				if (word.dir === altDir){ altDir = 1; }
-				
-				for (i=0; i<word.word.length; i++){
-					notPlaced.forEach(function(w){
-						for (j=0; j<w.length; j++){
-							if (word.word[i] === w[j]){
-								var cx = 0;
-								var cy = 0;
-								
-								if (altDir === 0){
-									cx = word.x - j;
-									cy = word.y + i;
-								} else {
-									cx = word.x + i;
-									cy = word.y - j;
-								}
-													
-								potentialMatches.push({ word:w, dir:altDir, x:cx, y:cy });
-							}
-						}
-					});
-				}
-			});
-			
-			var wordCoords = [];
-			placed.forEach(function(word){
-				for (i=0; i<word.word.length; i++){
-					if (word.dir === 0){
-						wordCoords.push({ x:word.x + i, y:word.y, letter: word.word[i], dir:word.dir });
-					} else {
-						wordCoords.push({ x:word.x, y:word.y + i, letter: word.word[i], dir:word.dir });
-					}
-				}
-			});
-			
-			potentialMatches.forEach(function(match,limit){
-				var matchCoords = [];
-				
-				for (i=0; i<match.word.length; i++){
-					if (match.dir === 0){
-						matchCoords.push({ x:match.x + i, y:match.y, letter: match.word[i], dir:match.dir });
-					} else {
-						matchCoords.push({ x:match.x, y:match.y + i, letter: match.word[i], dir:match.dir });
-					}
-				}
-				
-				var safeMatch = true;
-				var matchCounter = 0;
-				var linkCoords = [];
-				
-				for (i=0; i<matchCoords.length; i++){
-					var coordA = matchCoords[i];
-					wordCoords.forEach(function(coordB){
-						if (coordA.x === coordB.x && coordA.y === coordB.y){
-							if (coordA.letter === coordB.letter && coordA.dir !== coordB.dir){
-								matchCounter++;
-								linkCoords.push(coordA.x + ':' + coordA.y);
-							} else {
-								safeMatch = false;
-							}
-						}
-					});
-				}
-				
-				if (safeMatch){
-					for (i=0; i<matchCoords.length; i++){
-						var checkUp = '';
-						var checkDown = '';
-						var checkLeft = '';
-						var checkRight = '';
-						var coordA = matchCoords[i];
-						
-						var j = 1;
-						while (checkUp.indexOf(',') === -1){
-							if (coordA.x >= 0 && coordA.x <= grid.length - 1){
-								if (coordA.y-j >= 0 && coordA.y-j <= grid[coordA.x].length - 1){
-									if (grid[coordA.x][coordA.y-j] !== ''){
-										if (!linkCoords.includes(coordA.x + ':' + (coordA.y-j))){
-											checkUp = grid[coordA.x][coordA.y-j] + checkUp;
-										}
-									} else { checkUp += ','; }
-								} else { checkUp += ','; }
-							} else { checkUp += ','; }
-							
-							j++;
-						}
-						
-						checkUp = checkUp.replace(',','');
-						
-						j=1;
-						while (checkDown.indexOf(',') === -1){
-							if (coordA.x >= 0 && coordA.x <= grid.length - 1){
-								if (coordA.y+j >= 0 && coordA.y+j <= grid[coordA.x].length - 1){
-									if (grid[coordA.x][coordA.y+j] !== ''){
-										if (!linkCoords.includes(coordA.x + ':' + (coordA.y+j))){
-											checkDown += grid[coordA.x][coordA.y+j];
-										}
-									} else { checkDown += ','; }
-								} else { checkDown += ','; }
-							} else { checkDown += ','; }
-							
-							j++;
-						}
-							
-						checkDown = checkDown.replace(',','');
-						
-						j=1;
-						while (checkLeft.indexOf(',') === -1){
-							if (coordA.x-j >= 0 && coordA.x-j <= grid.length - 1){
-								if (coordA.y >= 0 && coordA.y <= grid[coordA.x-j].length - 1){
-									if (grid[coordA.x-j][coordA.y] !== ''){
-										if (!linkCoords.includes((coordA.x-j) + ':' + coordA.y)){
-											checkLeft = grid[coordA.x-j][coordA.y] + checkLeft;
-										}
-									} else { checkLeft += ','; }
-								} else { checkLeft += ','; }
-							} else { checkLeft += ','; }
-							
-							j++;
-						}
-							
-						checkLeft = checkLeft.replace(',','');
-						
-						j=1;
-						while (checkRight.indexOf(',') === -1){
-							if (coordA.x+j >= 0 && coordA.x+j <= grid.length - 1){
-								if (coordA.y >= 0 && coordA.y <= grid[coordA.x+j].length - 1){
-									if (grid[coordA.x+j][coordA.y] !== ''){
-										if (!linkCoords.includes((coordA.x+j) + ':' + coordA.y)){
-											checkRight += grid[coordA.x+j][coordA.y];
-										}
-									} else { checkRight += ','; }
-								} else { checkRight += ','; }
-							} else { checkRight += ','; }
-							
-							j++;
-						}
-							
-						checkRight = checkRight.replace(',','');
-						
-						var checkV = checkUp + match.word[i] + checkDown;
-						if (checkV.length > 1 && !words.includes(checkV)){ safeMatch = false; }
-						
-						var checkH = checkLeft + match.word[i] + checkRight;
-						if (checkH.length > 1 && !words.includes(checkH)){ safeMatch = false; }
-					}
-				}
-				
-				if (safeMatch){
-					if (matchCounter > 1){
-						safeMultiMatches.push(match);
-					} else {
-						safeMatches.push(match);
-					}
-				}
-			});
-			
-			if (safeMultiMatches.length > 0){
-				var bestMatch = safeMultiMatches[Math.floor(Math.random() * safeMultiMatches.length)];
-				placed.push(bestMatch);
-				SetBounds(bestMatch.x, bestMatch.y, bestMatch.dir, bestMatch.word.length);
-				notPlaced = notPlaced.filter(function(value){ return value != bestMatch.word; });
-			} else if (safeMatches.length > 0) {
-				var bestMatch = safeMatches[Math.floor(Math.random() * safeMatches.length)];
-				placed.push(bestMatch);
-				SetBounds(bestMatch.x, bestMatch.y, bestMatch.dir, bestMatch.word.length);
-				notPlaced = notPlaced.filter(function(value){ return value != bestMatch.word; });
-			}
-			
-			placed.forEach(function(word){
-				for (i=0; i<word.word.length; i++){
-					if (word.dir === 0){
-						grid[word.x + i][word.y] = word.word[i];
-					} else {
-						grid[word.x][word.y + i] = word.word[i];
-					}
-				}
-			});
-		});
-		
-		if (maxX - minX >= config.cols - 1){ notPlaced = null; }
-		if (maxY - minY >= config.rows - 1){ notPlaced = null; }
-		
-		maxPlacementAttempts--;
-	}
-	
-	if (maxPlacementAttempts === 0){
-		alert('Unable to support tolerance of: ' + config.tolerance + ', please increase the tolerace in order to successfully build the crossword.');
-	} else {
-		// Get the bounding box (minX, maxX, minY, maxY) and re-position for draw
-		grid = [];
-		for (x=0; x < config.cols; x++){
-			var yArr = [];
-			for (y=0; y < config.rows; y++){
-				yArr.push('');
-			}
-				
-			grid.push(yArr);
-			answers.push(JSON.parse(JSON.stringify(yArr)));
-		}
-		
-		placed.forEach(function(word){
-			for (i=0; i<word.word.length; i++){
-				if (word.dir === 0){
-					grid[word.x + i - minX][word.y - minY] = word.word[i].toUpperCase();
-				} else {
-					grid[word.x - minX][word.y + i - minY] = word.word[i].toUpperCase();
-				}
-				
-				if (i===0){
-					for (j=0; j<config.words.length; j++){
-						if (word.word === config.words[j].word){
-							config.words[j].start = [word.x + i - minX, word.y - minY];
-							config.words[j].dir = word.dir;
-						}
-					}
-				}
-			}
-		});
-    
-    var minW = (maxX - minX + 1) * config.boxWidth + config.paddingLeft;
-    var minH = (maxY - minY + 1) * config.boxHeight + config.paddingTop;
-    
-    // Rescale width to respect aspect ratio?
-    var fitW = minH * ($('canvas').width() / $('canvas').height());
-    var fitH = minW * ($('canvas').height() / $('canvas').width());
-    
-    if (fitW > minW){ $('canvas').attr('width', fitW); }
-    else { $('canvas').attr('width', minW); }
-    
-    if (fitH > minH){ $('canvas').attr('height', fitH); }
-    else { $('canvas').attr('height', minH); }
-    
-    cw = fitW;
-    ch = fitH;
-		
-		Repaint();
-		
-		inputReady = true;
-	}
-}
-*/
-
 function Repaint(){
 	ctx.clearRect(0, 0, cw, ch);
 	
@@ -525,28 +250,28 @@ function Repaint(){
 	if (JSON.stringify(grid) === JSON.stringify(answers)){ Victory(); }
 }
 
-function showClues() {
-	const cluesContainerOriz = document.getElementById('CluesAcross');
-	cluesContainerOriz.innerHTML = ''; // pulisci
+// function showClues() {
+// 	const cluesContainerOriz = document.getElementById('CluesAcross');
+// 	cluesContainerOriz.innerHTML = ''; // pulisci
 
-	const cluesContainerVert = document.getElementById('CluesDown');
-	cluesContainerVert.innerHTML = ''; // pulisci
+// 	const cluesContainerVert = document.getElementById('CluesDown');
+// 	cluesContainerVert.innerHTML = ''; // pulisci
 	
-	config.words.forEach((word, index) => {
-		clue = '';
-		var clue = document.createTextNode(`${word.num}. ${word.clue}`);
-		const br = document.createElement("br");
-		if(word.dir === 0){
-			cluesContainerOriz.appendChild(clue);
-			cluesContainerOriz.appendChild(br);
-		} else {
-			cluesContainerVert.appendChild(clue);
-			cluesContainerVert.appendChild(br);
-		}
+// 	config.words.forEach((word, index) => {
+// 		clue = '';
+// 		var clue = document.createTextNode(`${word.num}. ${word.clue}`);
+// 		const br = document.createElement("br");
+// 		if(word.dir === 0){
+// 			cluesContainerOriz.appendChild(clue);
+// 			cluesContainerOriz.appendChild(br);
+// 		} else {
+// 			cluesContainerVert.appendChild(clue);
+// 			cluesContainerVert.appendChild(br);
+// 		}
 		
-	});
+// 	});
 
-}
+// }
 
 function getFontOffset(axis, letter){
 	/*
