@@ -16,7 +16,7 @@ header {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin: 0;
 }
 
@@ -43,7 +43,7 @@ h1 {
     max-width: 100%;
     padding: 20px;
     display: flex;
-    background: rgba(245, 222, 180, 0.575);
+    background: rgba(240, 224, 194, 0.575);
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     flex-direction: column;
@@ -84,7 +84,7 @@ footer {
 }
 
 #Across, #Down {
-	width: 45%;
+	width: 75%;
 	margin: 0;
 	padding: 0;
 	vertical-align: top;
