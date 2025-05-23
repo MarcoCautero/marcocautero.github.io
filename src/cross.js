@@ -23,11 +23,11 @@ var config = {
 	'fontSize': 28,
 	'tolerance': 0,
 	'words': [
-		{ word: "PUPA", clue: "Gatto preferito di Max", start: [0, 1], dir: 1 }, // [riga, colonna], 0 = orizzontale
-  		{ word: "SICILIA", clue: "Primo viaggio di coppia", start: [0, 3], dir: 1 },
-  		{ word: "Rex", clue: "Il T... da ingresso in chiesa", start: [0, 5], dir: 1 },
-  		{ word: "FUCILE", clue: "Lo imbracciava il Bepo al primo incontro con Max", start: [1, 0], dir: 0 },
-  		{ word: "ABITO", clue: "Oggi si è visto per la prima volta", start: [5, 1], dir: 0 }
+		{ word: "PUPA", clue: "Gatto preferito di Max", start: [0, 1], dir: 1, num: 1 }, // [riga, colonna], 0 = orizzontale
+  		{ word: "SICILIA", clue: "Primo viaggio di coppia", start: [0, 3], dir: 1 , num: 2 },
+  		{ word: "Rex", clue: "Il T... da ingresso in chiesa", start: [0, 5], dir: 1, num: 3 },
+  		{ word: "FUCILE", clue: "Lo imbracciava il Bepo al primo incontro con Max", start: [1, 0], dir: 0, num: 4},
+  		{ word: "ABITO", clue: "Oggi si è visto per la prima volta", start: [5, 1], dir: 0, num: 5 }
 	]
 };
 
@@ -39,8 +39,10 @@ config.words.forEach(function(word){
 $(document).ready(function(){
 	ctx.lineWidth = 2;
 	ctx.strokeStyle = '#000000';
+	// showClues();
 	init();
-	showClues();
+	// Repaint();
+	// 
 });
 
 $(document).ready(function () {
@@ -48,15 +50,16 @@ $(document).ready(function () {
 
   $(canvas).on("mouseup", function (event) {
     if (inputReady) {
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
+		const rect = canvas.getBoundingClientRect();
+		const scaleX = canvas.width / rect.width;
+		const scaleY = canvas.height / rect.height;
 
-      const x = (event.clientX - rect.left) * scaleX;
-      const y = (event.clientY - rect.top) * scaleY;
+		const x = (event.clientX - rect.left) * scaleX;
+		const y = (event.clientY - rect.top) * scaleY;
 
-      mouse_at = [x, y];
-      Repaint();
+		mouse_at = [x, y];
+  		// hiddenInput.focus();	
+		Repaint();
     }
   });
 });
@@ -106,39 +109,6 @@ $(window).keydown(function(event){
 
 const canvas = document.getElementById('MainCanvas');
 const hiddenInput = document.getElementById('hiddenInput');
-
-// Quando clicchi/tocchi sul canvas, mostra la tastiera
-canvas.addEventListener('pointerdown', () => {
-	console.log("focus");
-  	hiddenInput.focus();
-});
-
-// Quando tocchi altrove (non sul canvas), nascondi la tastiera
-// document.addEventListener('pointerdown', (e) => {
-//   if (!canvas.contains(e.target)) {
-// 	console.log("blur");
-//     hiddenInput.blur(); // Fa scomparire la tastiera
-//   }
-
-// });
-
-// hiddenInput.addEventListener('input', function () {
-//   	const value = hiddenInput.value;
-
-//  	if (value.length > 0) {
-// 		const letter = value[0].toUpperCase();
-// 		if (az.indexOf(letter) !== -1){
-// 			answers[selected[0]][selected[1]] = letter;
-// 			mouse_at = null;
-// 			SelectNext();
-// 		}
-		
-// 		Repaint();
-
-// 		// Pulisci l'input per il prossimo carattere
-// 		hiddenInput.value = '';
-//   	}
-// });
 
 function init() {
 	// Imposta dimensioni canvas proporzionalmente
@@ -495,7 +465,9 @@ function Repaint(){
 					mouse_at[1] > config.paddingTop + (i*config.boxHeight) &&
 					mouse_at[0] < config.paddingLeft + (j*config.boxWidth) + config.boxWidth &&
 					mouse_at[1] < config.paddingTop + (i*config.boxHeight) + config.boxHeight
-				){ selected = [j,i];} 
+				){ selected = [j,i];
+  					// hiddenInput.focus();	
+				} 
 				
 			}
 			
@@ -554,23 +526,25 @@ function Repaint(){
 }
 
 function showClues() {
-  const cluesContainerOriz = document.getElementById('CluesAcross');
-  cluesContainerOriz.innerHTML = ''; // pulisci
+	const cluesContainerOriz = document.getElementById('CluesAcross');
+	cluesContainerOriz.innerHTML = ''; // pulisci
 
-  const cluesContainerVert = document.getElementById('CluesAcross');
-  cluesContainerVert.innerHTML = ''; // pulisci
-
-  config.words.forEach((word, index) => {
-    const li = document.createElement('li');
-	if(word.dir === 0){
-		li.textContent = `${index + 1}. ${word.clue}`;
-    	cluesContainerOriz.appendChild(li);
-	} else {
-		li.cluesContainerVert = `${index + 1}. ${word.clue}`;
-		cluesContainerVert.appendChild(li);
-	}
-    
-  });
+	const cluesContainerVert = document.getElementById('CluesDown');
+	cluesContainerVert.innerHTML = ''; // pulisci
+	
+	config.words.forEach((word, index) => {
+		clue = '';
+		var clue = document.createTextNode(`${word.num}. ${word.clue}`);
+		const br = document.createElement("br");
+		if(word.dir === 0){
+			cluesContainerOriz.appendChild(clue);
+			cluesContainerOriz.appendChild(br);
+		} else {
+			cluesContainerVert.appendChild(clue);
+			cluesContainerVert.appendChild(br);
+		}
+		
+	});
 
 }
 
