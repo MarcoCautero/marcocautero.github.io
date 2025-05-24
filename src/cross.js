@@ -24,10 +24,15 @@ var config = {
 	'tolerance': 0,
 	'words': [
 		{ word: "PUPA", clue: "Gatto preferito di Max", start: [0, 1], dir: 1, num: 1 }, // [riga, colonna], 0 = orizzontale
-  		{ word: "SICILIA", clue: "Primo viaggio di coppia", start: [0, 3], dir: 1 , num: 2 },
-  		{ word: "Rex", clue: "Il T... da ingresso in chiesa", start: [0, 5], dir: 1, num: 3 },
+  		{ word: "FILM", clue:"", start: [0,3], dir: 1, num: 2},
+		{ word: "ALCOOL", clue:"", start: [0,4], dir: 1, num: 3},
   		{ word: "FUCILE", clue: "Lo imbracciava il Bepo al primo incontro con Max", start: [1, 0], dir: 0, num: 4},
-  		{ word: "ABITO", clue: "Oggi si è visto per la prima volta", start: [5, 1], dir: 0, num: 5 }
+  		{ word: "CALCIO", clue: "", start: [1, 2], dir: 1, num: 5},
+  		{ word: "PALCO", clue: "", start: [2, 1], dir: 0, num: 6},
+  		{ word: "CALMO", clue: "", start: [3, 0], dir: 0, num: 7},
+  		{ word: "CIN", clue: "", start: [4, 5], dir: 1, num: 8},
+  		{ word: "FRIULI", clue: "", start: [5, 0], dir: 0, num: 9},
+  		// { word: "ABITO", clue: "Oggi si è visto per la prima volta", start: [5, 1], dir: 0, num: 5 }
 	]
 };
 

@@ -15,6 +15,10 @@ body {
     min-height: 100vh;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 header {
     background-color: #fdfaf4;
     width: 100%;
@@ -63,7 +67,7 @@ h1 {
     max-width: 100%;
     padding: 20px;
     display: flex;
-    background: rgba(240, 224, 194, 0.575);
+    background: rgba(240, 224, 194, 0.8);
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     flex-direction: column;
@@ -195,3 +199,60 @@ footer {
 	padding: 0px;
 	margin: 0px;
 }
+
+ul#menu {
+    justify-content: center;
+    display: flex;
+    font-family: Georgia, serif;
+	width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #eed9c8;
+}
+
+ul#menu li {
+  float: left;
+  border-right:1px solid #f8f8f8;
+}
+
+ul#menu li a {
+  display: block;
+  color: #89b491;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* ul#menu {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+} */
+
+/* ul#menu li {
+    background-color: #eed9c8;
+    border-bottom: 5px solid #89b491;
+    display: inline;
+    width: 150px;
+    height: 30px;
+    margin: 2px;
+    float: left; 
+}
+ul#menu li a {
+    color: #6a8d73;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    text-decoration: none;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+}
+ul#menu li.active, ul#menu li:hover {
+    background-color: #89b491;
+    border-bottom: 5px solid #eed9c8;
+} */
