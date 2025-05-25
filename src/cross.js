@@ -31,7 +31,7 @@ var config = {
   		{ word: "PALCO", clue: "", start: [2, 1], dir: 0, num: 6},
   		{ word: "CALMO", clue: "", start: [3, 0], dir: 0, num: 7},
   		{ word: "CIN", clue: "", start: [4, 5], dir: 1, num: 8},
-  		{ word: "FRIULI", clue: "", start: [5, 0], dir: 0, num: 9},
+  		{ word: "GHIBLI", clue: "", start: [5, 0], dir: 0, num: 9},
   		// { word: "ABITO", clue: "Oggi si è visto per la prima volta", start: [5, 1], dir: 0, num: 5 }
 	]
 };
