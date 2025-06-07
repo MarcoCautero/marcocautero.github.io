@@ -65,8 +65,6 @@
       <div class="shadow"></div>
     </div>
     <h2>Informazioni Evento</h2>
-
-    
    
     <p><strong>Cerimonia:</strong>
       <a href="https://maps.app.goo.gl/rfBpASNf5A1t3n1DA" target="_blank">Chiesa di San Leonardo, Collalto (UD)</a>
@@ -77,15 +75,23 @@
     </p>
 
     <p><strong>Cerca il tuo nome o cognome per sapere a che tavolo sei: </strong>
-      <input type="text" id="ricerca" placeholder="Cerca per nome o cognome" oninput="filtraElenco()">
+      <input type="text" id="ricerca" placeholder="Nome, cognome o tavolo" oninput="filtraElenco()">
     </p>
     <table>
+      <thead>
+        <tr>
+          <th>Cognome</th>
+          <th>Nome</th>
+          <th>Tavolo</th>
+        </tr>
+      </thead>
       <tbody id="risultati"></tbody>
     </table>
-    
-    <p><strong>Playlist per entrare nel mood 😎:</strong>
+
+    <!-- <p><strong>Playlist per entrare nel mood 😎:</strong>
       <a href="https://open.spotify.com/intl-it/album/55aDarji66T5sb3cWEpDWS" target="_blank">Spotify</a>
-    </p>
+    </p> -->
+
     <p><strong>Calca o inquadra il QR code per condividere con noi le tue foto:</strong></p>
     <a href="https://drive.google.com/drive/folders/1YmWPPKqNG-MWlhqZpEZXnbQB48gL2NY6" target="_blank">
       <img class="main" src="img/frame.png" alt="me" />
