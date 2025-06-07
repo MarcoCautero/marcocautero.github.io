@@ -224,3 +224,19 @@ ul#menu li a {
   padding: 14px 16px;
   text-decoration: none;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+tr:hover td {
+  background-color: #f1f1f1;
+}

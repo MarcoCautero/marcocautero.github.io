@@ -65,13 +65,24 @@
       <div class="shadow"></div>
     </div>
     <h2>Informazioni Evento</h2>
+
+    
    
     <p><strong>Cerimonia:</strong>
       <a href="https://maps.app.goo.gl/rfBpASNf5A1t3n1DA" target="_blank">Chiesa di San Leonardo, Collalto (UD)</a>
     </p>
+
     <p><strong>Festeggiamenti:</strong>
       <a href="https://maps.app.goo.gl/DWTupo1zHzcSng8w5" target="_blank">Castello d'Arcano Superiore</a>
     </p>
+
+    <p><strong>Cerca il tuo nome o cognome per sapere a che tavolo sei: </strong>
+      <input type="text" id="ricerca" placeholder="Cerca per nome o cognome" oninput="filtraElenco()">
+    </p>
+    <table>
+      <tbody id="risultati"></tbody>
+    </table>
+    
     <p><strong>Playlist per entrare nel mood 😎:</strong>
       <a href="https://open.spotify.com/intl-it/album/55aDarji66T5sb3cWEpDWS" target="_blank">Spotify</a>
     </p>
@@ -79,7 +90,7 @@
     <a href="https://drive.google.com/drive/folders/1YmWPPKqNG-MWlhqZpEZXnbQB48gL2NY6" target="_blank">
       <img class="main" src="img/frame.png" alt="me" />
     </a>
-     </div>
+  </div>
 
   <footer>
     © 2025 written by Merk
@@ -90,5 +101,6 @@
   
   <!-- Cruciverba -->
   <script src="src/cross.js"></script>
+  <script src="src/tableau.js"></script>
 </body>
 </html>
