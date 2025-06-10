@@ -41,10 +41,10 @@ const elenco = [
   { nome: "Cosetta", cognome: "Bertolani", tavolo: "Bridge Baron" },
   { nome: "Paolo", cognome: "Comelli", tavolo: "Bridge Baron" },
   { nome: "Marina", cognome: "Bonazza", tavolo: "Bridge Baron" },
-  { nome: "Giovanni", cognome: "Cautero", tavolo: "Bridge Baron" },
-  { nome: "Isabella", cognome: "Pegoraro", tavolo: "Bridge Baron" },
   { nome: "Piero", cognome: "Pasini", tavolo: "Bridge Baron" },
   { nome: "Debora", cognome: "Biavaschi", tavolo: "Bridge Baron" },
+  { nome: "Angela", cognome: "Comelli", tavolo: "King's Bounty" },
+  { nome: "Lucia", cognome: "Comelli", tavolo: "King's Bounty" },
 
   // 9
   { nome: "Laura", cognome: "Brombin", tavolo: "King's Bounty" },
@@ -54,13 +54,13 @@ const elenco = [
   { nome: "Stefano", cognome: "Pigani", tavolo: "King's Bounty" },
   { nome: "Angela", cognome: "Peronio", tavolo: "King's Bounty" },
   { nome: "Luigina", cognome: "Rigo", tavolo: "King's Bounty" },
-  { nome: "Angela", cognome: "Comelli", tavolo: "King's Bounty" },
-  { nome: "Lucia", cognome: "Comelli", tavolo: "King's Bounty" },
+  { nome: "Giovanni", cognome: "Cautero", tavolo: "Bridge Baron" },
+  { nome: "Isabella", cognome: "Pegoraro", tavolo: "Bridge Baron" },
 
   // 8
   { nome: "Andrea", cognome: "Martinis", tavolo: "Overcooked" },
   { nome: "Chiara", cognome: "Monai", tavolo: "Overcooked" },
-  { nome: "Celeste", cognome: "Monai", tavolo: "Overcooked" },
+  { nome: "Celeste", cognome: "--", tavolo: "Overcooked" },
   { nome: "Aurora", cognome: "Pavon", tavolo: "Overcooked" },
   { nome: "Deborah", cognome: "Iacotti", tavolo: "Overcooked" },
   { nome: "Alessia", cognome: "Battaglia", tavolo: "Overcooked" },
@@ -76,12 +76,12 @@ const elenco = [
   { nome: "Luca Luigi", cognome: "Pontelli", tavolo: "Minecraft" },
   { nome: "Matteo", cognome: "Marini", tavolo: "Minecraft" },
   { nome: "Eleonora", cognome: "Santoianni", tavolo: "Minecraft" },
-  { nome: "Alberto Jr.", cognome: "Bianchini", tavolo: "Minecraft" },
+  { nome: "Alberto", cognome: "Jr. Bianchini", tavolo: "Minecraft" },
   { nome: "Bianca", cognome: "Hodoroaba", tavolo: "Minecraft" },
 
   // 7
-  { nome: "Mattia", cognome: "Sermo", tavolo: "FIFA 2013" },
-  { nome: "Alice", cognome: "Chiara", tavolo: "FIFA 2013" },
+  { nome: "Mattia", cognome: "Sermonico", tavolo: "FIFA 2013" },
+  { nome: "Alice", cognome: "Pividor", tavolo: "FIFA 2013" },
   { nome: "Luca", cognome: "Merlino", tavolo: "FIFA 2013" },
   { nome: "Elisa", cognome: "Clochiatti", tavolo: "FIFA 2013" },
   { nome: "Viola", cognome: "Merlino", tavolo: "FIFA 2013" },
@@ -101,12 +101,12 @@ const elenco = [
   { nome: "Sofia", cognome: "Dallorto", tavolo: "Metal Gear Solid" },
 
   // 8
-  { nome: "Pina", cognome: " ", tavolo: "Pokemon Blu" },
+  { nome: "Bepina", cognome: "Foschiani", tavolo: "Pokemon Blu" },
   { nome: "Andrea", cognome: "Cozzi", tavolo: "Pokemon Blu" },
   { nome: "Ilia", cognome: "Marini", tavolo: "Pokemon Blu" },
   { nome: "Lorenzo", cognome: "Tecco", tavolo: "Pokemon Blu" },
   { nome: "Fabio", cognome: "Tecco", tavolo: "Pokemon Blu" },
-  { nome: "Valentina", cognome: "Scridel", tavolo: "Pokemon Blu" },
+  { nome: "Valentina", cognome: "Mauro", tavolo: "Pokemon Blu" },
   { nome: "Damiano", cognome: "Tecco", tavolo: "Pokemon Blu" },
   { nome: "Ismaele", cognome: "Tecco", tavolo: "Pokemon Blu" },
 
@@ -133,13 +133,13 @@ const elenco = [
   { nome: "Pierino", cognome: "Scridel", tavolo: "TETRIS" },
   { nome: "Caroline", cognome: "Medard", tavolo: "TETRIS" },
   { nome: "Renato", cognome: "Cattarossi", tavolo: "TETRIS" },
-  { nome: "Rosy", cognome: "Mansutti", tavolo: "TETRIS" },
   { nome: "Giulio", cognome: "Scridel", tavolo: "TETRIS" },
   { nome: "Thomas", cognome: "Scridel", tavolo: "TETRIS" },
   { nome: "Melissa", cognome: "Scridel", tavolo: "TETRIS" },
   { nome: "Ermanno", cognome: "Mauro", tavolo: "TETRIS" },
   { nome: "Anna", cognome: "Doronzo", tavolo: "TETRIS" },
-  { nome: "Cristina", cognome: "Mauro", tavolo: "TETRIS" }
+  { nome: "Cristina", cognome: "Mauro", tavolo: "TETRIS" },
+  { nome: "Fabio", cognome: "Not", tavolo: "TETRIS" }
 
 ];
 
