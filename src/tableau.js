@@ -35,16 +35,16 @@ const elenco = [
   { nome: "Johann", cognome: "Fontanini", tavolo: "Call of Duty" },
 
   // 10
-  { nome: "Giovanni", cognome: "Comelli", tavolo: "Bridge Baron" },
-  { nome: "Antonella", cognome: "Dorì", tavolo: "Bridge Baron" },
-  { nome: "Marco", cognome: "Peronio", tavolo: "Bridge Baron" },
-  { nome: "Cosetta", cognome: "Bertolani", tavolo: "Bridge Baron" },
-  { nome: "Paolo", cognome: "Comelli", tavolo: "Bridge Baron" },
-  { nome: "Marina", cognome: "Bonazza", tavolo: "Bridge Baron" },
-  { nome: "Piero", cognome: "Pasini", tavolo: "Bridge Baron" },
-  { nome: "Debora", cognome: "Biavaschi", tavolo: "Bridge Baron" },
-  { nome: "Angela", cognome: "Comelli", tavolo: "King's Bounty" },
-  { nome: "Lucia", cognome: "Comelli", tavolo: "King's Bounty" },
+  { nome: "Giovanni", cognome: "Comelli", tavolo: "Bridge Base Online" },
+  { nome: "Antonella", cognome: "Dorì", tavolo: "Bridge Base Online" },
+  { nome: "Marco", cognome: "Peronio", tavolo: "Bridge Base Online" },
+  { nome: "Cosetta", cognome: "Bertolani", tavolo: "Bridge Base Online" },
+  { nome: "Paolo", cognome: "Comelli", tavolo: "Bridge Base Online" },
+  { nome: "Marina", cognome: "Bonazza", tavolo: "Bridge Base Online" },
+  { nome: "Piero", cognome: "Pasini", tavolo: "Bridge Base Online" },
+  { nome: "Debora", cognome: "Biavaschi", tavolo: "Bridge Base Online" },
+  { nome: "Angela", cognome: "Comelli", tavolo: "Bridge Base Online" },
+  { nome: "Lucia", cognome: "Comelli", tavolo: "Bridge Base Online" },
 
   // 9
   { nome: "Laura", cognome: "Brombin", tavolo: "King's Bounty" },
@@ -54,8 +54,8 @@ const elenco = [
   { nome: "Stefano", cognome: "Pigani", tavolo: "King's Bounty" },
   { nome: "Angela", cognome: "Peronio", tavolo: "King's Bounty" },
   { nome: "Luigina", cognome: "Rigo", tavolo: "King's Bounty" },
-  { nome: "Giovanni", cognome: "Cautero", tavolo: "Bridge Baron" },
-  { nome: "Isabella", cognome: "Pegoraro", tavolo: "Bridge Baron" },
+  { nome: "Giovanni", cognome: "Cautero", tavolo: "King's Bounty" },
+  { nome: "Isabella", cognome: "Pegoraro", tavolo: "King's Bounty" },
 
   // 8
   { nome: "Andrea", cognome: "Martinis", tavolo: "Overcooked" },
